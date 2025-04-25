@@ -1715,7 +1715,11 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
- 
+ @media (min-width:1025px) {
+  .responsive{
+    margin: auto;
+  }
+ }
 
 .email-input {
   width: 80%;
@@ -1832,10 +1836,6 @@ p {
 /* whatapp btn */
 
 
-@media (min-width: 1025px) {
-.responsive{
-margin: auto;
-}}
 
 .whatsapp-float {
   position: fixed;
