@@ -42,6 +42,129 @@
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
     <style>
+      /* Form Styles */
+      /* Form Styles */
+      .appointment .form-control {
+        padding: 10px 15px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        transition: all 0.3s;
+      }
+
+      .appointment .form-control:focus {
+        border-color: #1977cc;
+        box-shadow: 0 0 0 2px rgba(25, 119, 204, 0.2);
+      }
+
+      .appointment-btn {
+        background: #1977cc;
+        border: 0;
+        padding: 12px 30px;
+        color: #fff;
+        transition: all 0.4s;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .appointment-btn:hover {
+        background: #1c84e3;
+      }
+
+      .appointment-btn:disabled {
+        background: #a0c5e8;
+        cursor: not-allowed;
+      }
+
+      /* Loading State */
+      .loading {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        color: #1977cc;
+      }
+
+      .loading .spinner {
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(25, 119, 204, 0.3);
+        border-radius: 50%;
+        border-top-color: #1977cc;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Messages */
+      .error-message,
+      .success-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+      }
+
+      .error-message.show,
+      .success-message.show {
+        display: flex;
+        opacity: 1;
+      }
+
+      .error-message {
+        align-items: center;
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .success-message {
+        align-items: center;
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .success-message .success-icon {
+        background: #28a745;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      /* Validation Styles */
+      .invalid-feedback {
+        display: none;
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 0.875em;
+        color: #dc3545;
+      }
+
+      .is-invalid {
+        border-color: #dc3545 !important;
+        padding-right: calc(1.5em + 0.75rem);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+      }
+
+      .is-invalid ~ .invalid-feedback {
+        display: block;
+      }
       .appointment-btn {
         background-color: #0c3b64;
         color: white;
@@ -282,7 +405,7 @@
             <br />
             <h3>Improving Movement. Advancing Recovery.</h3>
             <br />
-            <h3>Coming Soon to Ellicott City, Maryland.</h3>
+            <h3>Coming Soon to Ellicott City, Colambia.</h3>
 
             <!-- <p>Specialized Care for Lymphedema & Lymphatic Health -->
             <!-- Providing expert therapy for swelling, mobility, <br> and recovery — led by a certified lymphedema therapist -->
@@ -377,78 +500,6 @@
         </div>
       </section>
       <!-- /Hero Section -->
-
-      <!-- About Section -->
-      <!-- <section id="about" class="about section">
-        <div class="container">
-          <div class="row gy-4 gx-5">
-            <div
-              class="col-lg-6 position-relative align-self-start"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80"
-                class="img-fluid"
-                alt="Therapist working with patient"
-              />
-              <a
-                href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
-                class="glightbox pulsating-play-btn"
-              ></a>
-            </div>
-
-            <div
-              class="col-lg-6 content"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <h3>About the Clinic</h3>
-              <p style="text-align: justify">
-                At LymphFit Center, we offer personalized, evidence-based
-                treatment for lymphedema and related lymphatic conditions. Our
-                mission is to help you reduce swelling, restore function, and
-                regain confidence in your body.
-              </p>
-              <p style="text-align: justify">
-                Founded by a licensed occupational therapist and certified
-                lymphedema specialist, LymphFit brings clinical expertise and
-                compassionate care together. As an educator who also trains
-                other therapists, our founder brings a high level of insight and
-                experience to every treatment session.
-              </p>
-              <ul>
-        <li>
-          <i class="fa-solid fa-vial-circle-check"></i>
-          <div>
-            <h5>Ullamco laboris nisi ut aliquip consequat</h5>
-            <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
-          </div>
-        </li>
-        <li>
-          <i class="fa-solid fa-pump-medical"></i>
-          <div>
-            <h5>Magnam soluta odio exercitationem reprehenderi</h5>
-            <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
-          </div>
-        </li>
-        <li>
-          <i class="fa-solid fa-heart-circle-xmark"></i>
-          <div>
-            <h5>Voluptatem et qui exercitationem</h5>
-            <p>Et velit et eos maiores est tempora et quos dolorem autem tempora incidunt maxime veniam</p>
-          </div>
-        </li>
-      </ul>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!-- /About Section -->
-
-      <!-- Stats Section -->
-
-      <!-- /Stats Section -->
 
       <!-- Services Section -->
       <section id="services" class="services section">
@@ -552,14 +603,20 @@
                 <div class="icon">
                   <i class="fas fa-dna"></i>
                 </div>
-                <a href="Cancer-Related Lymphedema Radiation, Chemotherapy  Lymph Node Removal.html" class="stretched-link">
+                <a
+                  href="Cancer-Related Lymphedema Radiation, Chemotherapy  Lymph Node Removal.html"
+                  class="stretched-link"
+                >
                   <h3 style="font-size: large">
                     Radiation or cancer-related lymphatic dysfunction
                   </h3>
                 </a>
                 <!-- <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem
                 alias eius labore.</p> -->
-                <a href="Cancer-Related Lymphedema Radiation, Chemotherapy  Lymph Node Removal.html" class="stretched-link"></a>
+                <a
+                  href="Cancer-Related Lymphedema Radiation, Chemotherapy  Lymph Node Removal.html"
+                  class="stretched-link"
+                ></a>
               </div>
             </div>
             <!-- End Service Item -->
@@ -573,14 +630,20 @@
                 <div class="icon">
                   <i class="fas fa-dna"></i>
                 </div>
-                <a href="Self-Management_and_Long-Term_Care_for_Lymphedema.html" class="stretched-link">
+                <a
+                  href="Self-Management_and_Long-Term_Care_for_Lymphedema.html"
+                  class="stretched-link"
+                >
                   <h3 style="font-size: large">
                     Education on self-management and long-term care
                   </h3>
                 </a>
                 <!-- <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti
                 recusandae ducimus enim.</p> -->
-                <a href="Self-Management_and_Long-Term_Care_for_Lymphedema.html" class="stretched-link"></a>
+                <a
+                  href="Self-Management_and_Long-Term_Care_for_Lymphedema.html"
+                  class="stretched-link"
+                ></a>
               </div>
             </div>
             <!-- End Service Item -->
@@ -985,8 +1048,7 @@
         </div>
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <form>
-            <!-- Your existing form fields remain the same -->
+          <form id="appointment-form">
             <div class="row">
               <div class="col-md-4 form-group">
                 <input
@@ -1015,8 +1077,13 @@
                   name="phone"
                   id="phone"
                   placeholder="Your Phone"
+                  pattern="[0-9]{10}"
+                  maxlength="10"
                   required
                 />
+                <div class="invalid-feedback">
+                  Please enter a valid 10-digit phone number
+                </div>
               </div>
             </div>
             <div class="form-group mt-3">
@@ -1028,11 +1095,20 @@
               ></textarea>
             </div>
             <div class="mt-3">
-              <!-- <div class="loading">Loading</div> -->
-              <div class="error-message"></div>
-              <!-- <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div> -->
+              <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <span>Sending your request...</span>
+              </div>
+              <div id="error-message" class="error-message"></div>
+              <div id="success-message" class="success-message">
+                <div class="success-icon">✓</div>
+                <span
+                  >Your appointment request has been sent successfully. Thank
+                  you!</span
+                >
+              </div>
               <div class="text-center">
-                <button class="appointment-btn" type="submit">
+                <button id="submit-btn" class="appointment-btn" type="submit">
                   Make an Appointment
                 </button>
               </div>
@@ -1041,329 +1117,6 @@
         </div>
       </section>
       <!-- /Appointment Section -->
-
-      <!-- /Departments Section -->
-
-      <!-- Testimonials Section -->
-      <!-- +
-          <div class="col-lg-5 info" data-aos="fade-up" data-aos-delay="100">
-            <h3>Testimonials</h3>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-            </p>
-          </div>
-
-          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="swiper init-swiper">
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-              <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img flex-shrink-0"
-                        alt="">
-                      <div>
-                        <h3>Saul Goodman</h3>
-                        <h4>Ceo &amp; Founder</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
-                        Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at
-                        semper.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div> -->
-      <!-- </div> -->
-      <!-- End testimonial item -->
-
-      <!-- <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img flex-shrink-0"
-                        alt="">
-                      <div>
-                        <h3>Sara Wilsson</h3>
-                        <h4>Designer</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum
-                        eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim
-                        culpa.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div> -->
-      <!-- </div> -->
-      <!-- End testimonial item -->
-
-      <!-- <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img flex-shrink-0"
-                        alt="">
-                      <div>
-                        <h3>Jena Karlis</h3>
-                        <h4>Store Owner</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis
-                        minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div>
-                </div>End testimonial item -->
-
-      <!-- <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img flex-shrink-0"
-                        alt="">
-                      <div>
-                        <h3>Matt Brandon</h3>
-                        <h4>Freelancer</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim
-                        velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum
-                        veniam.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div> -->
-      <!-- </div> -->
-      <!-- End testimonial item -->
-
-      <!-- <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img flex-shrink-0"
-                        alt="">
-                      <div>
-                        <h3>John Larson</h3>
-                        <h4>Entrepreneur</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam
-                        enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi
-                        cillum quid.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div>
-                </div> -->
-      <!-- End testimonial item -->
-
-      <!-- </div>
-              <div class="swiper-pagination"></div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div> -->
-
-      <!-- </section> -->
-      <!-- /Testimonials Section -->
-
-      <!-- Gallery Section -->
-      <!-- <section id="gallery" class="gallery section"> -->
-      <!-- <!-- Section Title -->
-      <!-- <div class="container section-title" data-aos="fade-up"> -->
-      <!-- <h2>Gallery</h2> -->
-      <!-- <p> -->
-      <!-- A glimpse into our modern medical facilities and professional care -->
-      <!-- environment -->
-      <!-- </p> -->
-      <!-- </div> -->
-      <!-- <!-- End Section Title -->
-
-      <!-- <div class="container-fluid" data-aos="fade-up" data-aos-delay="100"> -->
-      <!-- <div class="row g-0"> -->
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Modern hospital corridor" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- <!-- End Gallery Item -->
-
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Medical team discussion" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- <!-- End Gallery Item -->
-
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Clean hospital room" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- <!-- End Gallery Item -->
-
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Medical equipment" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- <!-- End Gallery Item -->
-
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Doctor reviewing charts" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!--  End Gallery Item -->
-
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Surgical team at work" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!--  End Gallery Item -->
-
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Doctor consultation" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!--  End Gallery Item -->
-
-      <!-- <div class="col-lg-3 col-md-4"> -->
-      <!-- <div class="gallery-item"> -->
-      <!-- <a -->
-      <!-- href="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=667&q=80" -->
-      <!-- class="glightbox" -->
-      <!-- data-gallery="images-gallery" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=333&q=80" -->
-      <!-- alt="Medical laboratory" -->
-      <!-- class="img-fluid" -->
-      <!-- /> -->
-      <!-- </a> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!--  End Gallery Item -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- </section> -->
-      <!-- /Gallery Section -->
 
       <!-- Waitlist Section -->
       <section class="lf-section lf-waitlist-section">
@@ -1717,38 +1470,89 @@
     <!-- Include this near the end of your <body> tag -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-      // Initialize EmailJS
-      (function () {
-        emailjs.init("OwgwI0x35nbklChz-"); // your actual public key
-      })();
-
-      // Handle form submission
       document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector("form");
+        // Initialize EmailJS
+        emailjs.init("OwgwI0x35nbklChz-");
+
+        const form = document.getElementById("appointment-form");
+        const phoneInput = document.getElementById("phone");
+        const submitBtn = document.getElementById("submit-btn");
+        const loading = document.getElementById("loading");
+        const errorMessage = document.getElementById("error-message");
+        const successMessage = document.getElementById("success-message");
+
+        // Phone number validation
+        phoneInput.addEventListener("input", function () {
+          // Remove any non-digit characters
+          this.value = this.value.replace(/\D/g, "");
+
+          // Validate length
+          if (this.value.length > 10) {
+            this.value = this.value.slice(0, 10);
+          }
+
+          // Toggle validation class
+          this.classList.toggle("is-invalid", this.value.length !== 10);
+        });
+
+        // Function to hide message after delay
+        function hideMessage(element) {
+          setTimeout(() => {
+            element.classList.remove("show");
+            setTimeout(() => (element.style.display = "none"), 300);
+          }, 2000);
+        }
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
 
+          // Validate phone number
+          if (phoneInput.value.length !== 10) {
+            phoneInput.classList.add("is-invalid");
+            phoneInput.focus();
+            return;
+          }
+
+          // Reset messages
+          errorMessage.classList.remove("show");
+          successMessage.classList.remove("show");
+          errorMessage.style.display = "none";
+          successMessage.style.display = "none";
+
+          // Show loading state
+          submitBtn.disabled = true;
+          loading.style.display = "flex";
+
           const formData = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
+            phone: phoneInput.value,
             message: document.querySelector("textarea[name='message']").value,
           };
 
-          emailjs.send("service_jc9cyj4", "template_8rsd0kc", formData).then(
-            function (response) {
+          emailjs
+            .send("service_jc9cyj4", "template_8rsd0kc", formData)
+            .then(function (response) {
               console.log("SUCCESS!", response.status, response.text);
-              alert("Your message has been sent!");
-            },
-            function (error) {
+              successMessage.style.display = "flex";
+              setTimeout(() => successMessage.classList.add("show"), 10);
+              form.reset();
+              hideMessage(successMessage);
+            })
+            .catch(function (error) {
               console.error("FAILED...", error);
-              alert("Something went wrong, please try again.");
-            }
-          );
+              errorMessage.textContent =
+                "Something went wrong. Please try again later.";
+              errorMessage.style.display = "flex";
+              setTimeout(() => errorMessage.classList.add("show"), 10);
+              hideMessage(errorMessage);
+            })
+            .finally(function () {
+              loading.style.display = "none";
+              submitBtn.disabled = false;
+            });
         });
       });
-
       document.addEventListener("DOMContentLoaded", function () {
         const toggle = document.getElementById("mobileMenuToggle");
         const nav = document.getElementById("primaryNavigation");
