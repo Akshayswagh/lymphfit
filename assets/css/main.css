@@ -1797,7 +1797,7 @@ p {
 @media (max-width: 768px) {
   .container {
       width: 90%;
-      margin: 30px auto;
+      /* margin: 30px auto; */
       padding: 20px;
   }
   h1 {
@@ -1830,6 +1830,12 @@ p {
   }
 }
 /* whatapp btn */
+
+
+@media (min-width: 1025px) {
+.responsive{
+margin: auto;
+}}
 
 .whatsapp-float {
   position: fixed;
